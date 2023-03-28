@@ -34,8 +34,6 @@ Snake::~Snake()
         delete currentNode;
         currentNode = nextNode;
     }
-
-    head = tail = NULL;
 }
 
 // DO NOT CHANGE METHOD
@@ -163,15 +161,13 @@ void Snake::move(Direction direction)
 {
     Position newPosition = head->position.move(direction);
 
-    /* YOUR CODE HERE */
+    game.snakeMoveTo(newPosition);/* YOUR CODE HERE */
     
     // If gameOver, return ; 
     
     if(game.isGameOver())
-        return;
-
     /* YOUR CODE HERE */
-    game.snakeMoveTo(newPosition);
+        return;
 
     // If cherry > 0, cherry descrease one and growAtFront() with newPosition
     if (cherry > 0) {

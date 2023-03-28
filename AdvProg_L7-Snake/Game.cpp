@@ -56,8 +56,8 @@ void Game::snakeMoveTo(Position pos) {
 	
 	if(getCellType(pos) == CELL_OFF_BOARD
 	|| getCellType(pos) == CELL_SNAKE) {// gameOver
-		status = GAME_OVER;
 		
+		status = GAME_OVER;
 		return;
 	}
 
@@ -116,8 +116,8 @@ void Game::processUserInput(Direction direction)
  ***/
 bool Game::canChange(Direction current, Direction next) const {
 	if (current == UP || current == DOWN) 
-		return next != LEFT && next != RIGHT;
-	return (next == UP || next == DOWN;// YOUR CODE HERE
+		return !(next == UP || next == DOWN);
+	return !(next == LEFT || next == RIGHT);// YOUR CODE HERE
 }
 
 
@@ -176,7 +176,7 @@ void Game::addCherry()
 		// init a random position inside the play screen (width, height)
 		// Suggestion: use rand() function
 
-        Position randomPos = {rand() % getWidth(), rand() % getHeight()}; // YOUR CODE HERE
+        Position randomPos = {rand() % width, rand() % height}; // YOUR CODE HERE
 		
 		// check if the randomPos is EMPTY 
         if (getCellType(randomPos) == CELL_EMPTY) {
